@@ -1,15 +1,17 @@
-import {PassThrough} from "stream";
-import {AppendOptions} from "form-data";
+import { PassThrough } from 'stream';
 
 export class FileStream extends PassThrough {
-    get appendOptions(): AppendOptions {
-        return {
-            filename: this.filename,
-            contentType: this.contentType,
-        };
-    }
+  get appendOptions() {
+    return {
+      filename: this.filename,
+      contentType: this.contentType,
+    };
+  }
 
-    constructor(private readonly filename: string, private readonly contentType: string) {
-        super();
-    }
+  constructor(
+    private readonly filename: string,
+    private readonly contentType: string
+  ) {
+    super();
+  }
 }

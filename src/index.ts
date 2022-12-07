@@ -5,6 +5,5 @@ export const sum = (a: number, b: number) => {
   return a + b;
 };
 
-
-export {} from "./file-stream"
-export {} from "./formdata"
+export {} from './file-stream';
+export {} from './formdata';
