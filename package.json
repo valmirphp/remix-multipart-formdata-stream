@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,6 +20,7 @@
     "analyze": "size-limit --why"
   },
   "peerDependencies": {
+    "@remix-run/node": "^1.8.1",
     "@remix-run/server-runtime": "^1.8.1",
     "@web3-storage/multipart-parser": "^1.0.0"
   },
@@ -40,11 +41,11 @@
   "size-limit": [
     {
       "path": "dist/remix-multipart-formdata-stream.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "1 KB"
     },
     {
       "path": "dist/remix-multipart-formdata-stream.esm.js",
-      "limit": "10 KB"
+      "limit": "1 KB"
     }
   ],
   "devDependencies": {
