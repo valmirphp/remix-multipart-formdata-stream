@@ -1,18 +1,9 @@
-import { PassThrough, Readable } from 'stream';
+import { PassThrough } from 'stream';
 import { streamMultipart } from '@web3-storage/multipart-parser';
 import { UploadHandlerPart } from '@remix-run/server-runtime/dist/formData';
-import { Request, writeAsyncIterableToWritable } from '@remix-run/node';
+import { writeAsyncIterableToWritable } from '@remix-run/node/dist/stream';
+import { Input, InputData, UploadHandler } from './types';
 import { FileStream } from './file-stream';
-
-export type InputStream = UploadHandlerPart & {
-  stream?: Readable;
-  text?: string;
-};
-export type InputData = InputStream | null | undefined;
-export type Input = Readable | string | null | undefined;
-export declare type UploadHandler = (
-  part: UploadHandlerPart
-) => Promise<InputData>;
 
 export const uploadHandler: UploadHandler = async (
   part: UploadHandlerPart
@@ -81,10 +72,10 @@ export async function parseMultipartFormDataStream(
   return multipartFormDataHandler(request, uploadHandler, keepNull);
 }
 
-export async function generateFormStream(
+export async function generateFormStream<R = Record<string, Input>>(
   request: Request,
   keepNull: boolean = false
-): Promise<Record<string, Input>> {
+): Promise<R> {
   const formData = await parseMultipartFormDataStream(request, keepNull);
 
   return Object.entries(Object.fromEntries(formData)).reduce<any>(
