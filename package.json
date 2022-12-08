@@ -1,10 +1,12 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "engines": {
     "node": ">=10"
@@ -16,11 +18,11 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "publish:local": "npm publish --registry http://0.0.0.0:4873"
   },
   "peerDependencies": {
-    "@remix-run/node": "^1.8.1",
-    "@remix-run/server-runtime": "^1.8.1",
+    "@remix-run/node": "^1.7.5",
     "@web3-storage/multipart-parser": "^1.0.0"
   },
   "husky": {
@@ -40,19 +42,23 @@
   "size-limit": [
     {
       "path": "dist/remix-multipart-formdata-stream.cjs.production.min.js",
-      "limit": "1 KB"
+      "limit": "5 KB"
     },
     {
       "path": "dist/remix-multipart-formdata-stream.esm.js",
-      "limit": "1 KB"
+      "limit": "5 KB"
     }
   ],
   "devDependencies": {
+    "@remix-run/node": "^1.8.2",
     "@size-limit/preset-small-lib": "^8.1.0",
+    "@web3-storage/multipart-parser": "^1.0.0",
     "husky": "^8.0.2",
     "size-limit": "^8.1.0",
+    "size-limit-node-esbuild": "^0.2.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3"
-  }
+  },
+  "dependencies": {}
 }
